@@ -26,6 +26,10 @@
 -grandTotal (the sum of all lineTotal fields)
 -createdAt
 -paidAt
+5. ProcessedEvents
+-eventId
+-orderId
+-processedAt
 
 ## 1. Tenant + Role flow
 So the way the tenant identification and userRole flow is at Login, the server reads the User document and signs a JWT attaching to payload data such as their ids, emails, tenantId they work for, and their role(either Admin or Cashier). The "tenant_id" is never passed by the client but only exclusively from the verified User record. Every protected route has to pass through Auth middleware that verifies JWT signature and attaches the decoded payload of JWT to req.user. A separate requireRole('admin') guard blocks cashier from accessing admin-only endpoints.
